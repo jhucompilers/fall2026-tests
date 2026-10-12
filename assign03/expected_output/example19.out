@@ -1,0 +1,9 @@
+*** Symbol table global ***
+0|sum|function|function (int, int) returning int
+0|main|function|function () returning int
+*** Symbol table function sum ***
+1|a|variable|int
+1|b|variable|int
+1|c|variable|int
+*** Symbol table function main ***
+1|x|variable|int

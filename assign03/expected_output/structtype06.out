@@ -1,0 +1,13 @@
+*** Symbol table global ***
+0|strcpy|function|function (pointer to char, pointer to const char) returning void
+0|struct Item|type|struct Item {array of 32 x char, int, int}
+0|main|function|function () returning int
+*** Symbol table function strcpy ***
+1|dst|variable|pointer to char
+1|src|variable|pointer to const char
+*** Symbol table struct Item ***
+1|name|variable|array of 32 x char
+1|price|variable|int
+1|quantity|variable|int
+*** Symbol table function main ***
+1|item|variable|struct Item {array of 32 x char, int, int}

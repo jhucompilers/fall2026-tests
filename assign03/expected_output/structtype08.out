@@ -1,0 +1,10 @@
+*** Symbol table global ***
+0|struct Node|type|struct Node {int, pointer to struct Node}
+0|main|function|function () returning int
+*** Symbol table struct Node ***
+1|data|variable|int
+1|next|variable|pointer to struct Node {int, pointer to struct Node}
+*** Symbol table function main ***
+1|n1|variable|struct Node {int, pointer to struct Node}
+1|n2|variable|struct Node {int, pointer to struct Node}
+1|n3|variable|struct Node {int, pointer to struct Node}

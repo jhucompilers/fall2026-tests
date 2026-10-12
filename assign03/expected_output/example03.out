@@ -1,0 +1,7 @@
+*** Symbol table global ***
+0|incr|function|function (pointer to int) returning void
+0|main|function|function () returning int
+*** Symbol table function incr ***
+1|p|variable|pointer to int
+*** Symbol table function main ***
+1|a|variable|int

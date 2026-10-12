@@ -1,0 +1,1 @@
+input/badfunc01.c:7:1:Error: Redefinition of 'x'

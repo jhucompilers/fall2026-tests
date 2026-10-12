@@ -1,0 +1,16 @@
+*** Symbol table global ***
+0|struct Point|type|struct Point {int, int}
+0|sq_dist|function|function (pointer to struct Point {int, int}, pointer to struct Point {int, int}) returning int
+0|main|function|function () returning int
+*** Symbol table struct Point ***
+1|x|variable|int
+1|y|variable|int
+*** Symbol table function sq_dist ***
+1|p1|variable|pointer to struct Point {int, int}
+1|p2|variable|pointer to struct Point {int, int}
+1|xdiff|variable|int
+1|ydiff|variable|int
+*** Symbol table function main ***
+1|a|variable|struct Point {int, int}
+1|b|variable|struct Point {int, int}
+1|result|variable|int

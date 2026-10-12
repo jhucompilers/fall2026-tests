@@ -1,0 +1,10 @@
+*** Symbol table global ***
+0|struct Item|type|struct Item {int, char}
+0|main|function|function () returning int
+*** Symbol table struct Item ***
+1|foo|variable|int
+1|bar|variable|char
+*** Symbol table function main ***
+1|x|variable|struct Item {int, char}
+1|y|variable|pointer to struct Item {int, char}
+1|z|variable|array of 10 x struct Item {int, char}

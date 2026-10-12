@@ -1,0 +1,6 @@
+*** Symbol table global ***
+0|main|function|function () returning int
+*** Symbol table function main ***
+1|l1|variable|long
+1|l2|variable|long
+1|l3|variable|unsigned long

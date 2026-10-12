@@ -1,0 +1,1 @@
+input/badfunc02.c:5:1:Error: Return type 'char' conflicts with previous declaration or definition of 'int'

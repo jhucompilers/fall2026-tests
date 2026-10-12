@@ -1,0 +1,5 @@
+*** Symbol table global ***
+0|main|function|function () returning int
+*** Symbol table function main ***
+1|a|variable|array of 3 x int
+1|p|variable|pointer to int

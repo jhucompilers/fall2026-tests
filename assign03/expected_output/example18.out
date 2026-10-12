@@ -1,0 +1,18 @@
+*** Symbol table global ***
+0|struct Foo|type|struct Foo {int, char}
+0|readint|function|function () returning int
+0|main|function|function () returning int
+*** Symbol table struct Foo ***
+1|x|variable|int
+1|y|variable|char
+*** Symbol table function readint ***
+*** Symbol table function main ***
+1|result|variable|int
+1|f|variable|int
+*** Symbol table block 14 ***
+2|f|variable|struct Foo {int, char}
+*** Symbol table block 18 ***
+*** Symbol table block 19 ***
+4|f|variable|pointer to const char
+*** Symbol table block 23 ***
+4|f|variable|unsigned long

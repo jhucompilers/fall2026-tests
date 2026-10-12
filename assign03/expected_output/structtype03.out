@@ -1,0 +1,10 @@
+*** Symbol table global ***
+0|struct Point|type|struct Point {int, int}
+0|main|function|function () returning int
+*** Symbol table struct Point ***
+1|x|variable|int
+1|y|variable|int
+*** Symbol table function main ***
+1|points|variable|array of 10 x struct Point {int, int}
+1|i|variable|int
+*** Symbol table block 10 ***

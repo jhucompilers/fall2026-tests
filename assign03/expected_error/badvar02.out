@@ -1,0 +1,1 @@
+input/badvar02.c:6:3:Error: Redefinition of 'x'
