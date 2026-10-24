@@ -1,11 +1,27 @@
 #! /usr/bin/env ruby
 
-raise "Usage: ./run_test.rb <testname>" if ARGV.length != 1
+high_level = false
+if !ARGV.empty? && ARGV[0] == '-h'
+  high_level = true
+  ARGV.shift
+end
+
+# Make sure that HLSIM_DIR is set, and that the hlsim executable
+# exists and is executable
+hlsim_exe = nil
+if high_level
+  raise "-h option requires HLSIM_DIR environment variable to be set" if !ENV.has_key?('HLSIM_DIR')
+  hlsim_exe = "#{ENV['HLSIM_DIR']}/build/hlsim"
+  raise "'#{hlsim_exe}' does not exist or is not executable" if !File.executable?(hlsim_exe)
+end
+
+raise "Usage: ./run_test.rb [-h] <testname>" if ARGV.length != 1
 
 testname = ARGV[0]
 
 # Run build.rb to compile/assemble/link the test program
-rc = system("./build.rb #{testname}")
+cmd = "./build.rb #{high_level ? '-h' : ''} #{testname}"
+rc = system(cmd)
 if !rc
   STDERR.puts "build.rb failed"
   exit 1
@@ -14,9 +30,12 @@ end
 system("mkdir -p actual_output");
 
 # Execute the test executable
+
+test_exe = high_level ? "#{hlsim_exe} out/#{testname}_highlevel.txt" : "./out/#{testname}"
+
 exit_status = nil
 if File.exist?("data/#{testname}.in")
-  rc = system("./out/#{testname} < data/#{testname}.in > actual_output/#{testname}.out")
+  rc = system("#{test_exe} < data/#{testname}.in > actual_output/#{testname}.out")
   if !rc.nil?
     exit_status = $?
   end

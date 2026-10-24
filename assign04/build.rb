@@ -127,20 +127,42 @@ EOF
   end
 end
 
-testname = ARGV.shift
-raise "Usage: build.rb <testname>" if testname.nil?
+high_level = false
+if !ARGV.empty? && ARGV[0] == '-h'
+  high_level = true
+  ARGV.shift
+end
+
+raise "Usage: build.rb [-h] <testname>" if ARGV.length != 1
+testname = ARGV[0]
 
 raise "ASSIGN04_DIR environment variable must be defined" if !ENV.has_key?('ASSIGN04_DIR')
 compiler_exe = "#{ENV['ASSIGN04_DIR']}/nearly_cc"
 raise "#{compiler_exe} does not exist or is not executable" if !FileTest.executable?(compiler_exe)
 
-out, err, status = Open3.capture3(compiler_exe, "input/#{testname}.c", :stdin_data => '')
+cmd = [compiler_exe]
+if high_level
+  cmd.push('-h')
+end
+cmd.push("input/#{testname}.c")
+
+out, err, status = Open3.capture3(*cmd, :stdin_data => '')
 #puts "out is #{out}"
 if !status.success?
   STDERR.puts "nearly_cc command failed"
   STDERR.puts "stderr output:"
   STDERR.print err
   exit 1
+end
+
+if high_level
+  # Just generating high-level code
+  highlevel_src = "out/#{testname}_highlevel.txt"
+  File.open(highlevel_src, 'w') do |outf|
+    outf.print out
+  end
+  puts "High-level code successfully written to '#{highlevel_src}'"
+  exit 0
 end
 
 asm_src = "out/#{testname}.S"
