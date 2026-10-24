@@ -40,7 +40,7 @@ if File.exist?("data/#{testname}.in")
     exit_status = $?
   end
 else
-  rc = system("./out/#{testname} > actual_output/#{testname}.out")
+  rc = system("#{test_exe} > actual_output/#{testname}.out")
   if !rc.nil?
     exit_status = $?
   end
