@@ -1,5 +1,12 @@
 #! /usr/bin/env ruby
 
+high_level = false
+if ARGV.length > 0 && ARGV[0] == '-h'
+  high_level = true
+  STDERR.puts "Running high-level IR simulator on all tests"
+  STDERR.puts "Warning: the example29 and example31 tests are very slow to simulate"
+end
+
 testcases = []
 
 IO.popen("ls input/*.c") do |f|
@@ -17,7 +24,8 @@ testcases.each do |testname|
   #puts testname
   print "#{testname}..."
   STDOUT.flush
-  rc = system("./run_test.rb #{testname} > /dev/null 2> /dev/null")
+  hl_opt = high_level ? '-h' : ''
+  rc = system("./run_test.rb #{hl_opt} #{testname} > /dev/null 2> /dev/null")
   if rc
     puts "passed!"
     num_passed += 1
