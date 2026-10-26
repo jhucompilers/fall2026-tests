@@ -155,6 +155,8 @@ if !status.success?
   exit 1
 end
 
+system("mkdir -p out")
+
 if high_level
   # Just generating high-level code
   highlevel_src = "out/#{testname}_highlevel.txt"
@@ -168,7 +170,6 @@ end
 asm_src = "out/#{testname}.S"
 gen_exe = "out/#{testname}"
 
-system("mkdir -p out")
 File.open("out/#{testname}.S", 'w') do |outf|
   outf.print out
 end
