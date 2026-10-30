@@ -6,12 +6,19 @@ if !ARGV.empty? && ARGV[0] == '-h'
   ARGV.shift
 end
 
-# Make sure that HLSIM_DIR is set, and that the hlsim executable
-# exists and is executable
+# If '-h' option is specified to simulate high-level code,
+# make sure that either HLSIM_EXE or HLSIM_DIR is set,
+# and that the hlsim executable exists and is executable
 hlsim_exe = nil
 if high_level
-  raise "-h option requires HLSIM_DIR environment variable to be set" if !ENV.has_key?('HLSIM_DIR')
-  hlsim_exe = "#{ENV['HLSIM_DIR']}/build/hlsim"
+  if ENV.has_key?( 'HLSIM_EXE' )
+    hlsim_exe = ENV['HLSIM_EXE']
+  elsif ENV.has_key?( 'HLSIM_DIR' )
+    hlsim_exe = "#{ENV['HLSIM_DIR']}/build/hlsim"
+  else
+    raise "-h option requires HLSIM_EXE or HLSIM_DIR environment variable to be set"
+  end
+
   raise "'#{hlsim_exe}' does not exist or is not executable" if !File.executable?(hlsim_exe)
 end
 
